@@ -1,5 +1,5 @@
 
-FROM maven:3.5.3-jdk-8
+FROM maven:3.6.3-jdk-8
 #FROM openjdk:8u121-jdk
 
 LABEL maintainer-twitter="@coheigea"
