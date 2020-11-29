@@ -18,7 +18,7 @@ WORKDIR /opt
 RUN apt-get -q update && apt-get install -y -q python gcc \
  && tar zxvf apache-ranger-${RANGER_VERSION}.tar.gz \
  && cd apache-ranger-${RANGER_VERSION} \
- && mvn package assembly:assembly -DskipTests \
+ && mvn clean compile package install -DskipTests \
  && cp target/ranger-${RANGER_VERSION}-admin.tar.gz /opt \
  && cd /opt \
  && tar zxvf ranger-${RANGER_VERSION}-admin.tar.gz \
