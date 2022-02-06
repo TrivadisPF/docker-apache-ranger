@@ -16,8 +16,10 @@ COPY ranger-entrypoint.sh /opt
 WORKDIR /opt
 
 RUN apt-get -q update && apt-get install -y -q python gcc \
- && tar zxvf apache-ranger-${RANGER_VERSION}.tar.gz \
- && cd apache-ranger-${RANGER_VERSION} \
+ && mkdir -p apache-ranger-${RANGER_VERSION} \
+ && tar zxvf apache-ranger-${RANGER_VERSION}.tar.gz -C apache-ranger-${RANGER_VERSION} 
+ 
+RUN cd apache-ranger-${RANGER_VERSION} \
  && mvn clean compile package install -DskipTests \
  && cp target/ranger-${RANGER_VERSION}-admin.tar.gz /opt \
  && cd /opt \
